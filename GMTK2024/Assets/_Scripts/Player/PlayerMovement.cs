@@ -56,21 +56,16 @@ public class PlayerMovement : MonoBehaviour
             TransitionState(GroundState);
     } 
 
-    /*private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.gameObject.layer == 20)
-        {
-            other.isTrigger = false;
-            other.transform.SetParent(transform);
-        }
-        
-    }*/
-
     public void UpdateCollider(Transform colliderPosition, Transform ballTransform) 
     {
+        if(ballTransform.TryGetComponent(out PlayerBody body))
+            body.ActiveColliders();
+
+        
+        ballTransform.rotation = Quaternion.identity;
         ballTransform.position = colliderPosition.position;
-        ballTransform.localRotation = Quaternion.identity;
-        ballTransform.SetParent(this.transform);
+        ballTransform.SetParent(this.transform, true);
+
     }
 
 }
