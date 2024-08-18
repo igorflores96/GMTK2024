@@ -14,6 +14,7 @@ public class WallMovementState : PlayerBaseState
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
         playerContext.Rb.gravityScale = 0.0f;
+        playerContext.Rb.velocity = new Vector2(0.0f, 0.0f);
     }
 
     public override void ExitState(PlayerMovement playerContext)
@@ -25,14 +26,15 @@ public class WallMovementState : PlayerBaseState
     public override void UpdateState(PlayerMovement playerContext)
     {
         float y = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().y;
-        float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;
-
+        //float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;
+    
         float boostX = playerContext.PlayerActions.Movement.Boost.ReadValue<Vector2>().x;
         float boostY = playerContext.PlayerActions.Movement.Boost.ReadValue<Vector2>().y;
 
         float rotation = boostX + boostY * playerContext.RotationSpeed;
-
-        playerContext.transform.Translate(new Vector2(0.0f, y + -x) * playerContext.Speed, Space.World);
+        
+        playerContext.transform.Translate(new Vector2(0.0f, y) * playerContext.Speed, Space.World);
+        
         playerContext.transform.Rotate(new Vector3(0.0f, 0.0f, rotation), Space.Self);
     }
 
