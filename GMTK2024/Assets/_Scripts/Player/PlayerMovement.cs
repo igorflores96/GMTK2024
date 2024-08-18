@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
     private void OnEnable() 
     {
         _playerActions = new PlayerInputActions();
@@ -76,17 +75,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateRayCast()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _leftLayer))
+        if (Physics2D.Raycast(transform.position, Vector2.up, _rayCastDistance, _cellingLayer))
+        {
+            TransitionState(CellingState);
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _leftLayer))
         {
             TransitionState(WallLeftState);
         }
         else if (Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _rightLayer))
         {
             TransitionState(WallRightState);
-        }
-        else if (Physics2D.Raycast(transform.position, Vector2.up, _rayCastDistance, _cellingLayer))
-        {
-            TransitionState(CellingState);
         }
         else if (Physics2D.Raycast(transform.position, Vector2.down, _rayCastDistance, _floorLayer))
         {
