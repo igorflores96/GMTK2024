@@ -8,12 +8,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private float _rayCastDistance;
+
+    [Header("Layers Parameters")]
+    [SerializeField] private LayerMask _cellingLayer;
+    [SerializeField] private LayerMask _floorLayer;
+    [SerializeField] private LayerMask _leftLayer;
+    [SerializeField] private LayerMask _rightLayer;
+
     
     private PlayerInputActions _playerActions;
     private GroundMovementState _groundState = new GroundMovementState();
     private JumpingMovementState _jumpingState = new JumpingMovementState();
-    private WallMovementState _wallState = new WallMovementState();
+    private WallLeftMovement _wallLeftState = new WallLeftMovement();
+    private WallRightMovement _wallRightState = new WallRightMovement();
     private FallingMovementState _fallingState = new FallingMovementState();
+    private CellingMovementState _cellingState = new CellingMovementState();
+
 
     private PlayerBaseState _currentState;
     private List<Vector2> _occupiedPositions = new List<Vector2>();
@@ -25,8 +36,11 @@ public class PlayerMovement : MonoBehaviour
     public float JumpForce => _jumpForce;
     public GroundMovementState GroundState => _groundState;
     public JumpingMovementState JumpingState => _jumpingState; 
-    public WallMovementState WallState => _wallState; 
+    public WallLeftMovement WallLeftState => _wallLeftState;
+    public WallRightMovement WallRightState => _wallRightState;
     public FallingMovementState FallingState => _fallingState; 
+    public CellingMovementState CellingState => _cellingState; 
+
 
 
 
@@ -57,12 +71,26 @@ public class PlayerMovement : MonoBehaviour
         _currentState.EnterState(this);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
+    public void UpdateRayCast()
     {
-        if(other.gameObject.layer == 30)
+        if (Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _leftLayer))
+        {
+            TransitionState(WallLeftState);
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _rightLayer))
+        {
+            TransitionState(WallRightState);
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.up, _rayCastDistance, _cellingLayer))
+        {
+            TransitionState(CellingState);
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.down, _rayCastDistance, _floorLayer))
+        {
             TransitionState(GroundState);
-        else if(other.gameObject.layer == 10)
-            TransitionState(WallState);
+        }
+        else
+            TransitionState(GroundState);
 
     }
     
@@ -77,6 +105,19 @@ public class PlayerMovement : MonoBehaviour
         ballTransform.SetParent(this.transform, true);
         ballTransform.localRotation = Quaternion.identity;
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * _rayCastDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position - Vector3.right * _rayCastDistance);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.up * _rayCastDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * _rayCastDistance);
     }
 
 }
