@@ -18,7 +18,7 @@ public class JumpingMovementState : PlayerBaseState
     {
         time += Time.deltaTime;
 
-        if(time > 1.0f)
+        if(time > 0.1f)
             playerContext.UpdateRayCast();
 
         float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;

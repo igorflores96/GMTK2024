@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,13 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _rayCastDistance;
+    [SerializeField] private List<Collider2D> _colliders;
 
     [Header("Layers Parameters")]
     [SerializeField] private LayerMask _cellingLayer;
     [SerializeField] private LayerMask _floorLayer;
     [SerializeField] private LayerMask _leftLayer;
     [SerializeField] private LayerMask _rightLayer;
-
     
     private PlayerInputActions _playerActions;
     private GroundMovementState _groundState = new GroundMovementState();
@@ -27,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     private PlayerBaseState _currentState;
-    private List<Vector2> _occupiedPositions = new List<Vector2>();
 
     public PlayerInputActions PlayerActions => _playerActions;
     public Rigidbody2D Rb => _rb;
@@ -47,15 +48,17 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() 
     {
         _playerActions = new PlayerInputActions();
-        _occupiedPositions.Add(Vector2.zero); // Adiciona a posição inicial do jogador
-
         _currentState = _groundState;
         _currentState.EnterState(this);
+
+        _playerActions.Movement.Binding.performed += UnbindingBody;
         _playerActions.Enable();
     }
 
     private void OnDisable() 
     {
+        _playerActions.Movement.Binding.performed -= UnbindingBody;
+
         _playerActions.Disable();
     }
 
@@ -99,12 +102,10 @@ public class PlayerMovement : MonoBehaviour
         if(ballTransform.TryGetComponent(out PlayerBody body))
             body.ActiveColliders();
 
-        
         ballTransform.rotation = Quaternion.identity;
         ballTransform.position = colliderPosition.position;
         ballTransform.SetParent(this.transform, true);
         ballTransform.localRotation = Quaternion.identity;
-
     }
 
     private void OnDrawGizmos()
@@ -118,6 +119,36 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * _rayCastDistance);
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position - Vector3.up * _rayCastDistance);
+    }
+
+    private void UnbindingBody(InputAction.CallbackContext context)
+    {
+        List<Transform> childrenToUnbind = new List<Transform>();
+
+        foreach (Transform child in transform)
+        {
+            childrenToUnbind.Add(child);
+        }
+
+        foreach (Transform child in childrenToUnbind)
+        {
+            if (child.TryGetComponent(out PlayerBody body))
+            {
+                body.DesactiveColliders();
+                child.SetParent(null);
+            }
+        }
+
+        StartCoroutine(ActiveCollider());
+    }
+
+    IEnumerator ActiveCollider()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        foreach(Collider2D collider in _colliders)
+            collider.gameObject.SetActive(true);
+
     }
 
 }
