@@ -1,20 +1,36 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [Header("Player Parameters")]
+    [SerializeField] private float _speed;
+    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody2D _rb;
+    
     private PlayerInputActions _playerActions;
+    private GroundMovementState _groundState = new GroundMovementState();
+    private JumpingMovementState _jumpingState = new JumpingMovementState();
+    private PlayerBaseState _currentState;
+    private List<Vector2> _occupiedPositions = new List<Vector2>();
+
+    public PlayerInputActions PlayerActions => _playerActions;
+    public Rigidbody2D Rb => _rb;
+    public float Speed => _speed;
+    public float RotationSpeed => _rotationSpeed;
+    public float JumpForce => _jumpForce;
+    public GroundMovementState GroundState => _groundState;
+    public JumpingMovementState JumpingState => _jumpingState; 
 
     private void OnEnable() 
     {
         _playerActions = new PlayerInputActions();
+        _occupiedPositions.Add(Vector2.zero); // Adiciona a posição inicial do jogador
 
+        _currentState = _groundState;
+        _currentState.EnterState(this);
         _playerActions.Enable();
-
     }
 
     private void OnDisable() 
@@ -24,15 +40,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float x = _playerActions.Movement.Move.ReadValue<Vector2>().x;
-        float y = _playerActions.Movement.Move.ReadValue<Vector2>().y;
-
-        float boostX = _playerActions.Movement.Boost.ReadValue<Vector2>().x;
-        float boostY = _playerActions.Movement.Boost.ReadValue<Vector2>().y;
-
-        transform.Translate(new Vector2(x, y) * 0.1f, Space.World);
-        transform.Rotate(new Vector3(0.0f, 0.0f, boostX + boostY * 5.0f));
+        _currentState.UpdateState(this);
     }
 
+    public void TransitionState(PlayerBaseState newState)
+    {
+        _currentState.ExitState(this);
+        _currentState = newState;
+        _currentState.EnterState(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.layer == 30)
+            TransitionState(GroundState);
+    } 
+
+    /*private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.layer == 20)
+        {
+            other.isTrigger = false;
+            other.transform.SetParent(transform);
+        }
+        
+    }*/
+
+    public void UpdateCollider(Transform colliderPosition, Transform ballTransform) 
+    {
+        ballTransform.position = colliderPosition.position;
+        ballTransform.localRotation = Quaternion.identity;
+        ballTransform.SetParent(this.transform);
+    }
 
 }
