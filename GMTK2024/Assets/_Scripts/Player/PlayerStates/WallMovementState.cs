@@ -1,24 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GroundMovementState : PlayerBaseState
+public class WallMovementState : PlayerBaseState
 {
     private System.Action<InputAction.CallbackContext> _jumpHandler;
+
     public override void EnterState(PlayerMovement playerContext)
     {
-        Debug.Log("Ground State");
+        Debug.Log("Wall State");
 
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
+        playerContext.Rb.gravityScale = 0.0f;
     }
 
     public override void ExitState(PlayerMovement playerContext)
     {
         playerContext.PlayerActions.Movement.Jump.performed -= _jumpHandler;
+        playerContext.Rb.gravityScale = 1.0f;
     }
 
     public override void UpdateState(PlayerMovement playerContext)
     {
+        float y = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().y;
         float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;
 
         float boostX = playerContext.PlayerActions.Movement.Boost.ReadValue<Vector2>().x;
@@ -26,7 +32,7 @@ public class GroundMovementState : PlayerBaseState
 
         float rotation = boostX + boostY * playerContext.RotationSpeed;
 
-        playerContext.transform.Translate(new Vector2(x, 0.0f) * playerContext.Speed, Space.World);
+        playerContext.transform.Translate(new Vector2(0.0f, y + -x) * playerContext.Speed, Space.World);
         playerContext.transform.Rotate(new Vector3(0.0f, 0.0f, rotation), Space.Self);
     }
 
@@ -38,5 +44,4 @@ public class GroundMovementState : PlayerBaseState
             playerContext.TransitionState(playerContext.JumpingState);
         }
     }
-
 }

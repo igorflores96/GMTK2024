@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputActions _playerActions;
     private GroundMovementState _groundState = new GroundMovementState();
     private JumpingMovementState _jumpingState = new JumpingMovementState();
+    private WallMovementState _wallState = new WallMovementState();
+    private FallingMovementState _fallingState = new FallingMovementState();
+
     private PlayerBaseState _currentState;
     private List<Vector2> _occupiedPositions = new List<Vector2>();
 
@@ -22,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public float JumpForce => _jumpForce;
     public GroundMovementState GroundState => _groundState;
     public JumpingMovementState JumpingState => _jumpingState; 
+    public WallMovementState WallState => _wallState; 
+    public FallingMovementState FallingState => _fallingState; 
+
+
 
     private void OnEnable() 
     {
@@ -54,8 +61,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.gameObject.layer == 30)
             TransitionState(GroundState);
-    } 
+        else if(other.gameObject.layer == 10)
+            TransitionState(WallState);
 
+    }
+    
     public void UpdateCollider(Transform colliderPosition, Transform ballTransform) 
     {
         if(ballTransform.TryGetComponent(out PlayerBody body))
@@ -65,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         ballTransform.rotation = Quaternion.identity;
         ballTransform.position = colliderPosition.position;
         ballTransform.SetParent(this.transform, true);
+        ballTransform.localRotation = Quaternion.identity;
 
     }
 
