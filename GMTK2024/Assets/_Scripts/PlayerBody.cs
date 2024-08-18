@@ -12,4 +12,13 @@ public class PlayerBody : MonoBehaviour
             collider.gameObject.SetActive(true);
         }
     }
+
+    public void DesactiveColliders()
+    {
+        foreach (var collider in _colliders)
+        {
+            collider.gameObject.SetActive(false);
+        }
+    }
+
 }

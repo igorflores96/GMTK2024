@@ -11,14 +11,12 @@ public class WallRightMovement : PlayerBaseState
 
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
-        //playerContext.Rb.gravityScale = 0.0f;
         playerContext.Rb.velocity = new Vector2(0.0f, 0.0f);
     }
 
     public override void ExitState(PlayerMovement playerContext)
     {
         playerContext.PlayerActions.Movement.Jump.performed -= _jumpHandler;
-        //playerContext.Rb.gravityScale = 1.0f;
     }
 
     public override void UpdateState(PlayerMovement playerContext)
