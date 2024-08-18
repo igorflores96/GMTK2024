@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 309d0e8fa5e214d4c9de0660a74f20d3
+labels:
+- usfx
+- imphenzia
+- user interface
+- ui
+- gui
+- sci-fi
+- scifi
+- stereo
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

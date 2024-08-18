@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: c6c1f9fd90123ea45af32b882932680a
+labels:
+- usfx
+- imphenzia
+- mono
+- loop
+- machine
+- digger
+- lorry
+- construction
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
