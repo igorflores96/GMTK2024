@@ -19,6 +19,7 @@ public class GroundMovementState : PlayerBaseState
 
     public override void UpdateState(PlayerMovement playerContext)
     {
+        playerContext.UpdateRayCast();
         float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;
 
         float boostX = playerContext.PlayerActions.Movement.Boost.ReadValue<Vector2>().x;

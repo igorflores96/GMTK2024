@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class JumpingMovementState : PlayerBaseState
 {
+    float time = 0.0f;
     public override void EnterState(PlayerMovement playerContext)
     {
         Debug.Log("Jumping State");
+        time = 0.0f;
     }
 
     public override void ExitState(PlayerMovement playerContext)
     {
-        
+        time = 0.0f;
     }
 
     public override void UpdateState(PlayerMovement playerContext)
     {
+        time += Time.deltaTime;
+
+        if(time > 1.0f)
+            playerContext.UpdateRayCast();
+
         float x = playerContext.PlayerActions.Movement.Move.ReadValue<Vector2>().x;
 
         float boostX = playerContext.PlayerActions.Movement.Boost.ReadValue<Vector2>().x;
