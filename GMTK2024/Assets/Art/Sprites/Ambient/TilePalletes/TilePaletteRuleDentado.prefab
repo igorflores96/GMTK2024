@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3450406000503179713}
   - component: {fileID: 8223353143235412494}
   m_Layer: 0
-  m_Name: TilePaletteRule
+  m_Name: TilePaletteRuleDentado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
