@@ -25,17 +25,17 @@ TagManager:
   - 
   - 
   - 
+  - PlayerBody
   - 
   - 
   - 
   - 
+  - PlayerHead
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Floor
   - 
   m_SortingLayers:
   - name: Default
