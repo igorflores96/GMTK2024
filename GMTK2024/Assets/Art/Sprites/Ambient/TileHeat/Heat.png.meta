@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 259c44dcce861e54cab5546942f9fdaa
+guid: 51b24000d11b10144acc391b5e5942f6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GMTK Esteira2_0
+      name: Heat_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65deed78375fe8d4baa15c9fd811e66f
+      internalID: 1455656055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e07b7ad6b621e64abdb390586c30a02
+      internalID: 1042270065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca2de35eb62f154bb05923ef86a5ec1
+      internalID: 1632261363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2813bf84ff741845b7a2eaf6fd20494
+      internalID: -878638961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7947766a3d3534ea3f5d09d80a1706
+      internalID: 1419994110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46d3e4eb2e0516449d51579fd965030
+      internalID: 1735873814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heat_6
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c195039171cba941819d361ace621e3
-      internalID: 614010368
+      spriteID: 895d780e5c41acb46bea9c8cf6e82941
+      internalID: 1919281484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GMTK Esteira2_1
+      name: Heat_7
       rect:
         serializedVersion: 2
         x: 16
@@ -158,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e530f147dc2285744b13df18e60e0b95
-      internalID: 522300305
+      spriteID: fc604cc1913c3404b8d5316767aa3598
+      internalID: 1965359091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GMTK Esteira2_2
+      name: Heat_8
       rect:
         serializedVersion: 2
         x: 32
@@ -179,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3eabaa7dc2235524cba2e69ede1befe8
-      internalID: -1560234854
+      spriteID: 1bfee44c76c120942af97585d4a14359
+      internalID: 872592509
       vertices: []
       indices: 
       edges: []
@@ -196,9 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GMTK Esteira2_0: 614010368
-      GMTK Esteira2_1: 522300305
-      GMTK Esteira2_2: -1560234854
+      Heat_0: 1455656055
+      Heat_1: 1042270065
+      Heat_2: 1632261363
+      Heat_3: -878638961
+      Heat_4: 1419994110
+      Heat_5: 1735873814
+      Heat_6: 1919281484
+      Heat_7: 1965359091
+      Heat_8: 872592509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
