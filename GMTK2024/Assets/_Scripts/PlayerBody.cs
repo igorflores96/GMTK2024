@@ -69,8 +69,8 @@ public class PlayerBody : MonoBehaviour, IPlatformerVictim
     public void HandleAreaCollision(GearType typeArea)
     {
         if (typeArea != _type)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //Destroy(gameObject);
+            Destroy(gameObject);
+           //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
