@@ -173,4 +173,19 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
     {
         Die();
     }
+
+    private void OnCollisionStay2D(Collision2D other) 
+    {
+        if(other.gameObject.layer == 9)
+        {
+
+            if(other.gameObject.TryGetComponent(out Belt belt))
+            {
+                Vector2 direction = belt.moveRight ? Vector2.right : Vector2.left;
+                
+                _rb.AddForce(new Vector2(belt.conveyorSpeed * direction.x, 0), ForceMode2D.Force);
+            }
+
+        }
+    }
 }

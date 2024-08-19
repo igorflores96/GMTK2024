@@ -9,4 +9,5 @@ public class PhysicDeadArea : MonoBehaviour
         if(other.gameObject.TryGetComponent(out IPlatformerVictim component))
             component.HandleAreaCollision(_type);
     }
+
 }
