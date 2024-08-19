@@ -1,3 +1,4 @@
+//using System.Diagnostics;
 using UnityEngine;
 
 public class PhysicDeadArea : MonoBehaviour
@@ -6,7 +7,8 @@ public class PhysicDeadArea : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.TryGetComponent(out IPlatformerVictim component))
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.TryGetComponent(out IPlatformerVictim component))
             component.HandleAreaCollision(_type);
     }
 }

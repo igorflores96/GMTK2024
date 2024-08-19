@@ -6,7 +6,8 @@ public class DeadArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.TryGetComponent(out IPlatformerVictim component))
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.TryGetComponent(out IPlatformerVictim component))
             component.HandleAreaCollision(_type);
     }
 }
