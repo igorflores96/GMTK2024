@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             TransitionState(GroundState);
         }
         else
-            TransitionState(GroundState);
+            TransitionState(JumpingState);
 
     }
     
