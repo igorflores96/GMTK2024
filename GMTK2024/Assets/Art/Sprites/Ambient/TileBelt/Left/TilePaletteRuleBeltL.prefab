@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 6523246553813422529}
   - component: {fileID: 2662436522761159234}
   m_Layer: 0
-  m_Name: TilePaletteRuleBelt
+  m_Name: TilePaletteRuleBeltL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
