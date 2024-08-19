@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBody : MonoBehaviour, IPlatformerVictim
 {
@@ -47,8 +48,9 @@ public class PlayerBody : MonoBehaviour, IPlatformerVictim
         bool collideLeft = collisor.GetContact(0).normal.x > 0 && Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _leftLayer);
         bool collideRight = collisor.GetContact(0).normal.x < 0 && Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _rightLayer);
 
-        if(collideDown || collideUp || collideLeft || collideRight)            
-            Destroy(gameObject);
+        if(collideDown || collideUp || collideLeft || collideRight)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
@@ -66,8 +68,9 @@ public class PlayerBody : MonoBehaviour, IPlatformerVictim
 
     public void HandleAreaCollision(GearType typeArea)
     {
-        if(typeArea != _type)            
-            Destroy(gameObject);
+        if (typeArea != _type)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Destroy(gameObject);
     }
 }
 
