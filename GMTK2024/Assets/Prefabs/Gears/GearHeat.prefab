@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 6674185577173325809}
   - component: {fileID: 184418019929110246}
   m_Layer: 20
-  m_Name: GearLava
+  m_Name: GearHeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
