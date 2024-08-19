@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 999298504e628b7448fdc68914ca61fb
+guid: 34366516188a4d440aeba7f882bdbd09
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GMTK Esteira1_0
+      name: Belt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1147af23505a1664683d266e8fccb9f7
+      internalID: -622354146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Belt_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e7afca46f6ffa04793361e36b57955f
+      internalID: 307797908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Belt_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eefa1f05cb827741803ecdcf60ac01d
+      internalID: -10410759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Belt_3
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c219b32b54055e44fb0c6514f5947d69
-      internalID: 538069261
+      spriteID: ecd198b11941f6c4bacb7c56f3ec47e4
+      internalID: -1373000849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GMTK Esteira1_1
+      name: Belt_4
       rect:
         serializedVersion: 2
         x: 16
@@ -158,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f5c230e3266c0d408cef007b8023501
-      internalID: -1503731756
+      spriteID: 27c16d2e075d5e347bd6c3083a311468
+      internalID: -1927767518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GMTK Esteira1_2
+      name: Belt_5
       rect:
         serializedVersion: 2
         x: 32
@@ -179,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13f6062fcc6f22f419d7d0b917b286ae
-      internalID: 682567181
+      spriteID: b43db7eb4d0259149aba3d49605c4a3f
+      internalID: 135431288
       vertices: []
       indices: 
       edges: []
@@ -196,9 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GMTK Esteira1_0: 538069261
-      GMTK Esteira1_1: -1503731756
-      GMTK Esteira1_2: 682567181
+      Belt_0: -622354146
+      Belt_1: 307797908
+      Belt_2: -10410759
+      Belt_3: -1373000849
+      Belt_4: -1927767518
+      Belt_5: 135431288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
