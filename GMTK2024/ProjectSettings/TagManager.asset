@@ -15,28 +15,28 @@ TagManager:
   - 
   - 
   - 
+  - WallLeft
+  - WallRight
+  - 
+  - 
+  - 
+  - Blocker
   - 
   - 
   - 
   - 
+  - PlayerBody
   - 
   - 
   - 
   - 
+  - PlayerHead
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - Celling
   m_SortingLayers:
   - name: Default
     uniqueID: 0
