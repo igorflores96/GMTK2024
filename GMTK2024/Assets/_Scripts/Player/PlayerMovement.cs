@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPlatformerVictim
 {
     [Header("Player Parameters")]
     [SerializeField] private float _speed;
@@ -41,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     public WallRightMovement WallRightState => _wallRightState;
     public FallingMovementState FallingState => _fallingState; 
     public CellingMovementState CellingState => _cellingState; 
-
 
 
     private void OnEnable() 
@@ -93,13 +93,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             TransitionState(JumpingState);
-
+        
     }
     
     public void UpdateCollider(Transform colliderPosition, Transform ballTransform) 
     {
         if(ballTransform.TryGetComponent(out PlayerBody body))
+        {
+            body.UpdateInfo(_cellingLayer, _floorLayer, _leftLayer, _rightLayer, _rayCastDistance);
             body.ActiveColliders();
+        }
 
         ballTransform.rotation = Quaternion.identity;
         ballTransform.position = colliderPosition.position;
@@ -150,4 +153,24 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void HandlePlatformCollision(Collision2D collisor)
+    {
+        bool collideDown = collisor.GetContact(0).normal.y > 0 && Physics2D.Raycast(transform.position, Vector2.down, _rayCastDistance, _floorLayer);
+        bool collideUp = collisor.GetContact(0).normal.y < 0 && Physics2D.Raycast(transform.position, Vector2.up, _rayCastDistance, _cellingLayer);
+        bool collideLeft = collisor.GetContact(0).normal.x > 0 && Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _leftLayer);
+        bool collideRight = collisor.GetContact(0).normal.x < 0 && Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _rightLayer);
+
+        if(collideDown || collideUp || collideLeft || collideRight)
+            Die();
+    }
+
+    public void HandleAreaCollision(GearType typeArea)
+    {
+        Die();
+    }
 }

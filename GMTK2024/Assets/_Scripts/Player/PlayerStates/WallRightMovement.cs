@@ -7,8 +7,6 @@ public class WallRightMovement : PlayerBaseState
 
     public override void EnterState(PlayerMovement playerContext)
     {
-        Debug.Log("Wall State");
-
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
         playerContext.Rb.velocity = Vector2.zero;

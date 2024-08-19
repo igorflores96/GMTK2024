@@ -7,7 +7,6 @@ public class CellingMovementState : PlayerBaseState
 
     public override void EnterState(PlayerMovement playerContext)
     {
-        Debug.Log("Celling state");
         playerContext.Rb.gravityScale = 0.0f;
         playerContext.Rb.velocity = Vector2.zero;
     }

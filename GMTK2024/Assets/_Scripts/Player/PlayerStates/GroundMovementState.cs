@@ -6,8 +6,6 @@ public class GroundMovementState : PlayerBaseState
     private System.Action<InputAction.CallbackContext> _jumpHandler;
     public override void EnterState(PlayerMovement playerContext)
     {
-        Debug.Log("Ground State");
-
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
     }

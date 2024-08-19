@@ -5,7 +5,6 @@ public class JumpingMovementState : PlayerBaseState
     float time = 0.0f;
     public override void EnterState(PlayerMovement playerContext)
     {
-        Debug.Log("Jumping State");
         time = 0.0f;
     }
 
