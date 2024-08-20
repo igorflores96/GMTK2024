@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _rotationSpeed: 170
+  _rotationSpeed: 180
   _jumpForce: 25
   _rb: {fileID: 2540955408573685954}
   _rayCastDistance: 0.5
