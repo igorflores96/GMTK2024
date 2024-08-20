@@ -28,7 +28,7 @@ public class PauseManager : MonoBehaviour
 
     private void PauseGame(InputAction.CallbackContext context)
     {
-        
+        FindObjectOfType<AudioManager>().Play("ClickButton");
         Time.timeScale = !_isPaused ? 0.0f : 1.0f;
         _pauseMenuCanvas.SetActive(!_isPaused ? true : false);
         _isPaused = !_isPaused;

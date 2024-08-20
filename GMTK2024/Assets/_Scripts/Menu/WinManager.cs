@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +9,10 @@ public class WinManager : MonoBehaviour
     [SerializeField] private int _bodySize;
     [SerializeField] private int _SceneIndex;
     [SerializeField] private GameObject _winCanva;
-
+    private bool _winActived;
     private void OnEnable() 
     {
+        _winActived = false;
         _winCanva.SetActive(false);
     }
     private void OnTriggerStay2D(Collider2D other) 
@@ -29,12 +31,15 @@ public class WinManager : MonoBehaviour
 
             if(childrenToCount.Count >= _bodySize - 1)
             {
-                StartCoroutine(NextStage());
-                StartCoroutine(ActivePanel());
-
-                if(other.gameObject.TryGetComponent(out PlayerMovement pm))
+                if(!_winActived)
                 {
-                    pm.DisableInputs();
+                    _winActived = true;
+                    StartCoroutine(NextStage());
+                    StartCoroutine(ActivePanel());
+                    if(other.gameObject.TryGetComponent(out PlayerMovement pm))
+                    {
+                        pm.DisableInputs();
+                    }
                 }
             }
         }
@@ -50,6 +55,8 @@ public class WinManager : MonoBehaviour
     IEnumerator ActivePanel()
     {
         yield return new WaitForSeconds(0.5f);
+        
+        FindObjectOfType<AudioManager>().Play("LevelCompleted");
         _winCanva.SetActive(true);
 
     }

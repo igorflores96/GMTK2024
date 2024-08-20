@@ -49,8 +49,10 @@ public class PlayerBody : MonoBehaviour, IPlatformerVictim
         bool collideRight = collisor.GetContact(0).normal.x < 0 && Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _rightLayer);
 
         if(collideDown || collideUp || collideLeft || collideRight)
+        {
+            FindObjectOfType<AudioManager>().Play("Die");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmos()
@@ -69,8 +71,12 @@ public class PlayerBody : MonoBehaviour, IPlatformerVictim
     public void HandleAreaCollision(GearType typeArea)
     {
         if (typeArea != _type)
+        {
             Destroy(gameObject);
-           //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            FindObjectOfType<AudioManager>().Play("Disconnect");
+        }
+
+
     }
 }
 

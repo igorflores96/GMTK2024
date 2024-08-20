@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
             body.UpdateInfo(_cellingLayer, _floorLayer, _leftLayer, _rightLayer, _rayCastDistance);
             body.ActiveColliders();
         }
-
+        FindObjectOfType<AudioManager>().Play("Conect");
         ballTransform.rotation = Quaternion.identity;
         ballTransform.position = colliderPosition.position;
         ballTransform.SetParent(this.transform, true);
@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
                 child.SetParent(null);
             }
         }
-
+        FindObjectOfType<AudioManager>().Play("Disconnect");
         StartCoroutine(ActiveCollider());
     }
 
@@ -178,6 +178,7 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
 
     public void HandleAreaCollision(GearType typeArea)
     {
+        FindObjectOfType<AudioManager>().Play("Die");
         Die();
     }
 
@@ -198,6 +199,7 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
 
     private void ResetScene(InputAction.CallbackContext context)
     {
+        FindObjectOfType<AudioManager>().Play("Die");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if(Time.timeScale == 0.0f)
             Time.timeScale = 1.0f;
@@ -206,5 +208,10 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
     public void DisableInputs()
     {
         _playerActions.Disable();
+    }
+
+    public void PlayerAudio(string name)
+    {
+        FindObjectOfType<AudioManager>().Play(name);
     }
 }

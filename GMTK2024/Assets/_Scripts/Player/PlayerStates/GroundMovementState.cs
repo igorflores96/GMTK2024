@@ -8,6 +8,7 @@ public class GroundMovementState : PlayerBaseState
     {
         _jumpHandler = (context) => Jump(context, playerContext);
         playerContext.PlayerActions.Movement.Jump.performed += _jumpHandler;
+        playerContext.PlayerAudio("OnGround");
     }
 
     public override void ExitState(PlayerMovement playerContext)
@@ -38,6 +39,7 @@ public class GroundMovementState : PlayerBaseState
         {
             playerContext.Rb.AddForce(Vector2.up * playerContext.JumpForce, ForceMode2D.Impulse);
             playerContext.TransitionState(playerContext.JumpingState);
+            playerContext.PlayerAudio("Jump");
         }
     }
 
