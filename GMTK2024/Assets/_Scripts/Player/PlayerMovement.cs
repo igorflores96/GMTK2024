@@ -92,9 +92,10 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
         {
             TransitionState(GroundState);
         }
-        else if(Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _wallBlockLayer) || 
-        Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _wallBlockLayer))
+        else if(Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _wallBlockLayer) || Physics2D.Raycast(transform.position, Vector2.right, _rayCastDistance, _wallBlockLayer))
+        {
             TransitionState(FallingState);
+        }
         else
             TransitionState(JumpingState);
         
