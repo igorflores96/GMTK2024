@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -48,11 +49,16 @@ public class MovingPlatforms : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) 
     {
+        if (other == null || !other.gameObject.activeInHierarchy) return;
+
         if (other.gameObject.CompareTag("Player"))
         {
-            if(other.transform.parent != null)
+            if (other.transform.parent == transform)
+            {
                 other.transform.SetParent(null);
+            }
         }
     }
+
 
 }
