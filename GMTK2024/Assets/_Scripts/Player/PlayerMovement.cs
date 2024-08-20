@@ -193,4 +193,9 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
 
         }
     }
+
+    public void DisableInputs()
+    {
+        _playerActions.Disable();
+    }
 }
