@@ -1645,7 +1645,7 @@ Tilemap:
       - {fileID: 431862, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 164195815, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 378445320, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
-      m_AnimationSpeed: 10.180619
+      m_AnimationSpeed: 10.018105
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: 3, z: 0}
@@ -1655,7 +1655,7 @@ Tilemap:
       - {fileID: 431862, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 164195815, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 378445320, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
-      m_AnimationSpeed: 10.285865
+      m_AnimationSpeed: 10.900928
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -19, y: 6, z: 0}
@@ -1665,7 +1665,7 @@ Tilemap:
       - {fileID: 431862, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 164195815, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 378445320, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
-      m_AnimationSpeed: 10.424376
+      m_AnimationSpeed: 10.163003
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: 6, z: 0}
@@ -1675,7 +1675,7 @@ Tilemap:
       - {fileID: 431862, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 164195815, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 378445320, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
-      m_AnimationSpeed: 10.673325
+      m_AnimationSpeed: 10.306798
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: 12, z: 0}
@@ -1685,7 +1685,7 @@ Tilemap:
       - {fileID: 431862, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 164195815, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
       - {fileID: 378445320, guid: 1b4884f841ea23f45aa991f95167abac, type: 3}
-      m_AnimationSpeed: 10.827086
+      m_AnimationSpeed: 10.674328
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -2346,6 +2346,10 @@ PrefabInstance:
     - target: {fileID: 3273614205280569829, guid: 017d8306f2fc21d439b0c54601ac9dc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239948547184341036, guid: 017d8306f2fc21d439b0c54601ac9dc9, type: 3}
+      propertyPath: _bodySize
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7239948547184341036, guid: 017d8306f2fc21d439b0c54601ac9dc9, type: 3}
       propertyPath: _winCanva
