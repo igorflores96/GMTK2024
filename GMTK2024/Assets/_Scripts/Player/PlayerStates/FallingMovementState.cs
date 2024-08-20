@@ -14,7 +14,8 @@ public class FallingMovementState : PlayerBaseState
 
     public override void UpdateState(PlayerMovement playerContext)
     {
-        playerContext.Rb.velocity = new Vector2(playerContext.Rb.velocity.x, -0.5f * playerContext.Speed);
+        playerContext.Rb.velocity = new Vector2(playerContext.Rb.velocity.x, -0.1f * playerContext.Speed);
+        playerContext.UpdateRayCast();
     }
 
 }
