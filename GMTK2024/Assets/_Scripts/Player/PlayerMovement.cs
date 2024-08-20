@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
     [SerializeField] private LayerMask _floorLayer;
     [SerializeField] private LayerMask _leftLayer;
     [SerializeField] private LayerMask _rightLayer;
+    [SerializeField] private LayerMask _wallBlockLayer;
     
     private PlayerInputActions _playerActions;
     private GroundMovementState _groundState = new GroundMovementState();
@@ -91,6 +92,9 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
         {
             TransitionState(GroundState);
         }
+        else if(Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _wallBlockLayer) || 
+        Physics2D.Raycast(transform.position, Vector2.left, _rayCastDistance, _wallBlockLayer))
+            TransitionState(FallingState);
         else
             TransitionState(JumpingState);
         
