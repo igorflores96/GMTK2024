@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2540955408573685954}
   m_Layer: 0
   m_Name: GearPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _rotationSpeed: 150
-  _jumpForce: 0
+  _rotationSpeed: 180
+  _jumpForce: 25
   _rb: {fileID: 2540955408573685954}
   _rayCastDistance: 0.5
   _colliders:
@@ -73,6 +73,9 @@ MonoBehaviour:
   _rightLayer:
     serializedVersion: 2
     m_Bits: 2048
+  _wallBlockLayer:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!212 &1959170027571503102
 SpriteRenderer:
   m_ObjectHideFlags: 0
