@@ -52,12 +52,14 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
         _currentState.EnterState(this);
 
         _playerActions.Movement.Binding.performed += UnbindingBody;
+        _playerActions.Movement.ResetLevel.performed += ResetScene;
         _playerActions.Enable();
     }
 
     private void OnDisable() 
     {
         _playerActions.Movement.Binding.performed -= UnbindingBody;
+        _playerActions.Movement.ResetLevel.performed -= ResetScene;
 
         _playerActions.Disable();
     }
@@ -192,6 +194,13 @@ public class PlayerMovement : MonoBehaviour, IPlatformerVictim
             }
 
         }
+    }
+
+    private void ResetScene(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(Time.timeScale == 0.0f)
+            Time.timeScale = 1.0f;
     }
 
     public void DisableInputs()

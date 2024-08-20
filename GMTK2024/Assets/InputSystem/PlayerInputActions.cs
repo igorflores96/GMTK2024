@@ -62,6 +62,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fc8e7c8-b12e-4609-a388-ec9e42f9bfcd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Binding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de7cfe2b-f603-45ca-ada1-7082cdd72148"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Boost = m_Movement.FindAction("Boost", throwIfNotFound: true);
         m_Movement_Binding = m_Movement.FindAction("Binding", throwIfNotFound: true);
+        m_Movement_ResetLevel = m_Movement.FindAction("ResetLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Boost;
     private readonly InputAction m_Movement_Binding;
+    private readonly InputAction m_Movement_ResetLevel;
     public struct MovementActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -259,6 +281,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Boost => m_Wrapper.m_Movement_Boost;
         public InputAction @Binding => m_Wrapper.m_Movement_Binding;
+        public InputAction @ResetLevel => m_Wrapper.m_Movement_ResetLevel;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +303,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Binding.started += instance.OnBinding;
             @Binding.performed += instance.OnBinding;
             @Binding.canceled += instance.OnBinding;
+            @ResetLevel.started += instance.OnResetLevel;
+            @ResetLevel.performed += instance.OnResetLevel;
+            @ResetLevel.canceled += instance.OnResetLevel;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -296,6 +322,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Binding.started -= instance.OnBinding;
             @Binding.performed -= instance.OnBinding;
             @Binding.canceled -= instance.OnBinding;
+            @ResetLevel.started -= instance.OnResetLevel;
+            @ResetLevel.performed -= instance.OnResetLevel;
+            @ResetLevel.canceled -= instance.OnResetLevel;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -319,5 +348,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnBinding(InputAction.CallbackContext context);
+        void OnResetLevel(InputAction.CallbackContext context);
     }
 }
